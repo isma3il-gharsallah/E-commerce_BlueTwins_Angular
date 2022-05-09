@@ -1,0 +1,32 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter boutique</h1>
+  <form  (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group ">
+        <input required type="text" id="exampleInputlibcategorie1" class="form-control"  name="id" aria-describedby="idHelp"  [value]="boutique.id_boutique" hidden>
+        </div>
+        <div class="form-group row">
+          <label for="inputId3" class="col-sm-1 col-form-label">Id</label>
+  
+          <input required type="text" class="col-sm-10" id="exampleInputdesignation1" name="id2" aria-describedby="id2Help"  [value]="boutique.id_boutique" disabled>
+        </div>
+
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="lib_boutique" aria-describedby="categorielibHelp" [value]="boutique.lib_boutique" >
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="exampleFormControldescription_boutique1" rows="3" name="description_boutique" [value]="boutique.description_boutique"></textarea>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationmail_boutique1" name="mail_boutique" aria-describedby="mail_boutiqueHelp" [value]="boutique.mail_boutique" >
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationtel_boutique1" name="tel_boutique" aria-describedby="tel_boutiquebHelp"  [value]="boutique.tel_boutique" >
+      </div>
+     
+
+      <button  class="btn btn-primary">modifier</button>
+  </form>
+</div>

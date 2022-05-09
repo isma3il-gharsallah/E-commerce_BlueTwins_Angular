@@ -1,0 +1,98 @@
+<app-navbar-espace-client></app-navbar-espace-client>
+
+<aside class="left-sidebar">
+    
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li> <a class="waves-effect waves-dark" routerLinkActive="active"  routerLink="/profil" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">profile</span></a></li>
+                <li> <a class="waves-effect waves-dark" routerLink="/favorie" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu"></span>Votre liste d'envies</a></li>
+                <li> <a class="waves-effect waves-dark" routerLinkActive="active"  routerLink="/modifiermdp" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu"></span>Modifier votre mot de passe
+                </a></li>
+              
+            </ul>
+        </nav>
+        </div>
+  
+    <!-- End Sidebar scroll-->
+</aside>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center ">
+                <h4 class="text-themecolor">vos commande</h4>
+            </div>
+      
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row" >
+            <!-- column -->
+            <div class="col-9" style="margin-left: 10%;">
+                <div class="card">
+                    <div class="card-body">
+                    
+                        <div class="table-responsive border= 2 ">
+                            <table class="table">
+                                <thead  >
+                                    <tr>
+                                        <th>Reference</th>
+                                        
+                                        <th colspan="2">Articles</th>
+                                        <th>Qte</th>
+
+                                        <th>Date commmande</th>
+                                        <th>Etat</th>
+                                        <th>Détails</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody  *ngFor="let commande of commmandes | filter:searchText" >
+                                    <tr >
+                                        <td>{{commande.id_cmd}}</td>
+
+                                        <td colspan="2" ><span *ngFor="let article of commande.commande_prod" >{{article.article.designation}}   {{article.taille}}<br></span>   </td>
+                                        <td  ><span *ngFor="let article of commande.commande_prod" >{{article.quantite}}<br></span>   </td>
+
+                                        <td>passée le {{commande.date_cmd}} </td>
+                                        <td >
+                                            <span style="width: 100px;text-align:center;  font-size: 14px;" *ngIf="commande.etatcommande.etatcmd=='Livré'" class="label label-success font-size=20px">{{commande.etatcommande.etatcmd}}</span>
+                                            <span  style="width: 100px;text-align:center;  font-size: 14px;" *ngIf="commande.etatcommande.etatcmd=='Annulé'" class="label label-danger font-size=20px">{{commande.etatcommande.etatcmd}}</span>
+                                            <span style="width: 100px;text-align:center; font-size: 14px;" *ngIf="commande.etatcommande.etatcmd=='En attente de confirmation'" class="label label-warning font-size=20px">{{commande.etatcommande.etatcmd}}</span>
+                                            <span style="width: 100px;text-align:center; font-size: 14px;" *ngIf="commande.etatcommande.etatcmd=='Confirmé'" class="label label-info font-size=20px">{{commande.etatcommande.etatcmd}}</span>
+                                        
+                                        </td>
+                                        <td> <a   [routerLink]="['/detailcommande',commande.id_cmd]"> <i  style="font-size:15px;color:#2CA7FB"class="fa fa-eye" aria-hidden="true"></i></a></td>
+
+                                    </tr>
+                                                                      
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div> <br>
+
+
+
+ 

@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+
+<div  class="container " style="padding-top:100px;padding-bottom:140px" >
+    <div class="row">
+      <div class="col">
+  
+        <!-- Breadcrumbs -->
+  
+        <div class="breadcrumbs d-flex flex-row align-items-center">
+            <a style="color: black;font-weight: bold;" >{{Article.gender.gender_lib}}</a>&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<span style="color: black;font-weight: bold;" >{{Article.categorie.categorie_lib}}</span>
+        </div>
+  
+      </div>
+    </div>
+  <br><br>
+  <div class="row">
+    <img class="col-lg-6"  [src]="Article.img_article" alt="" >
+      <div class="col-lg-4 col-ms-12">
+          <div class="product_details_title row">
+  
+                        <h2 >{{Article.designation}} 
+                          <button  *ngIf='user' mat-icon-button (click)="toggleSelected()">
+
+                          <mat-icon style="color :crimson "
+                            *ngIf="selected"
+                            aria-label="Example icon-button with a heart icon">
+                            favorite
+                          </mat-icon>
+                        
+                          <mat-icon  style="color :crimson "
+                            *ngIf="!selected"
+                            aria-label="Example icon-button with a heart icon">
+                            favorite_border
+                          </mat-icon>
+                        
+                        </button></h2>
+
+          </div>
+
+          <div class="product_price row">{{Article.prix| currency:'DNT '}} </div>
+  <div *ngIf="quantiteSelected>0">
+          <div class="form-group row">
+            <label for="example-Size-input" class=" col-form-label">Size</label>
+            <div class="col-4">
+  <!-- <select  class="form-control" id="example-Size-input" (change)="quantite_Cal()">
+            <option  *ngFor="let taille of tailles"  > {{taille.taille.lib_taille}} </option>
+          </select>
+  -->
+     
+  
+ <form [formGroup]="form" >
+    <select formControlName="type" class="validate form-control" (change)="change($event)">
+        <option  *ngFor="let taille of tailles" [value]="taille.taille.lib_taille" [label]="taille.taille.lib_taille" ></option>
+    </select>
+  </form>
+
+</div>
+</div>
+<form  (ngSubmit)="ajouterpanier($event)" >
+           <div class="form-group row">
+            <label for="example-text-input" class="col-form-label">Quantité</label>
+            <div class="col-4">
+              <input class="form-control" type="number"  name="quantites" value="0" min="0" [max]="quantiteSelected" step="1" >
+            </div>
+            <div class="col-4">
+            <span for="example-text-input">{{quantiteSelected}} unités disponibles</span>
+            </div>
+          </div>
+  
+  
+          <div class="row">
+            <button type="submit"  class="btn btn-light col-lg-10 col-sm-12 col-md-12  col-12" style="width:230px;height:40px;"><a style="  text-decoration: none;  color:black ;  font-weight: bold;" >add to cart</a></button>
+          </div><br><br>
+          
+         
+        </form>
+      </div>
+      <div class="alert alert-secondary text-center" role="alert" *ngIf="quantiteSelected==0">
+        Out of stock!
+      </div>
+        <p>
+          Description:
+          <br>
+          {{Article.description_article}}
+        </p>
+      </div>
+    
+  </div>
+  </div>
+
+ 
+
+  <app-footer></app-footer>

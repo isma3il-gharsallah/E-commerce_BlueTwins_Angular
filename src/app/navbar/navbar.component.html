@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light " style=" padding-top: 2%; ">
+    <a class="navbar-brand" href="index.html">Blue Twins</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav navbar-center mr-auto mt-2 mt-lg-0" >
+          <li class="nav-item active">
+              <a class="nav-link" href="/categorie/Homme" ><h5>Homme </h5></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/categorie/Femme"><h5>Femme </h5></a>
+              </li>
+              <li class="nav-item active">
+                  <a class="nav-link" href="/categorie/Enfant"><h5>Enfant </h5></a>
+                </li>
+        </ul>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/profil"><i class="fa fa-user-circle"  style="font-size:28px;"></i>&nbsp;&nbsp;</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="cursor:pointer;" *ngIf='user' (click)='deconnexion()' ><i class="fa fa-sign-out"  style="font-size:30px;"></i>&nbsp;&nbsp;</a>
+          </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/panier"><i class="fa fa-shopping-bag"  style="font-size:25px;"></i>&nbsp;&nbsp;<span class="badge badge-primary" style="font-size:15px;opacity: 0.5;">{{nbrArticles}}</span></a>
+                </li>
+            </ul>
+        </div>
+      </div>
+  </nav>

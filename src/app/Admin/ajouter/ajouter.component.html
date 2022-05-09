@@ -1,0 +1,70 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container ">
+  <h1>Ajouter Produit</h1>
+<form  [formGroup]="registerForm" #userForm (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group">
+      <input required type="text" class="form-control" id="exampleInputdesignation1"  name="designation" aria-describedby="designationHelp"  placeholder="Enter designation" [ngClass]="{ 'is-invalid': submitted && f.designation.errors }" formControlName="designation">
+      <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
+        <div *ngIf="f.designation.errors.required">designation obligatoire</div>
+    </div>
+    </div>
+    <div class="form-group">
+        <input  type="number" class="form-control"  id="exampleInputprix1" formControlName="prix" name="prix" aria-describedby="prixHelp"  placeholder="Enter prix" required [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+        <div *ngIf="submitted && f.prix.errors" class="invalid-feedback">
+          <div *ngIf="f.prix.errors.required">prix obligatoire</div>
+      </div>
+      </div>
+      
+      <div class="form-group">
+        <textarea class="form-control" id="exampleFormControldescription_article1" formControlName="description"  rows="3" name="description_article" placeholder="Enter description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">description obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control"  id="exampleInputtva1"  formControlName="tva" name="tva" aria-describedby="tvaHelp"  placeholder="Enter TVA" [ngClass]="{ 'is-invalid': submitted && f.tva.errors }">
+        <div *ngIf="submitted && f.tva.errors" class="invalid-feedback">
+          <div *ngIf="f.tva.errors.required">tva obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control"  id="exampleInputremise1"  formControlName="remise"name="remise" aria-describedby="remiseHelp"  placeholder="Enter remise" [ngClass]="{ 'is-invalid': submitted && f.remise.errors }">
+        <div *ngIf="submitted && f.remise.errors" class="invalid-feedback">
+          <div *ngIf="f.remise.errors.required">remise obligatoire</div>
+      </div>
+      </div> 
+   
+      <select class="form-control form-control-sm"  name="categorie">
+        <option  *ngFor="let categorie of categories" [value]="categorie.id_categorie">{{categorie.categorie_lib}}</option>
+      </select>
+      <br>
+      <select class="form-control form-control-sm"  name="gender">
+        <option  *ngFor="let gender of genders" [value]="gender.id_gender">{{gender.gender_lib}}</option>
+      </select>
+      <br>
+   <div class="custom-file">
+        <input class="custom-file-input"
+        type="file" id="file" name="file" (change)="onFileChanged($event)" 
+        accept="image/x-png"
+        #file>
+        <label class="custom-file-label" for="validatedCustomFile" formControlName="image"name="image" (click)="file.click()" [ngClass]="{ 'is-invalid': submitted && f.image.errors }">Choisir une image...</label>
+        <div class="invalid-feedback">Choisir une image...</div>
+      </div>
+
+    <!--   
+      <input class="custom-file-input"
+      type="file" id="file" name="file" (change)="onFileChanged($event)"
+      #file>
+    <label (click)="file.click()">Select File</label>
+    <span (click)="onUpload()">Upload!</span>
+    -->
+
+      <br>
+      <br>
+
+      
+    <button  class="btn btn-primary"> Ajouter </button>
+  </form>
+
+</div>

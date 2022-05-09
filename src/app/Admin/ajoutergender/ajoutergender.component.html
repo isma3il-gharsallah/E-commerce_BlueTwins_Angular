@@ -1,0 +1,17 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter Gender</h1>
+    <form  [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" >
+      <div class="form-group">
+          <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="gender_lib" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.gender_lib.errors }" formControlName="gender_lib"  >
+          <div *ngIf="submitted && f.gender_lib.errors" class="invalid-feedback">
+            <div *ngIf="f.gender_lib.errors.required"> libellée Mode obligatoire</div>
+        </div>
+        </div>
+    
+        <button  class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+

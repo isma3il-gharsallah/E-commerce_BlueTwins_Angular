@@ -1,0 +1,172 @@
+<app-navbar></app-navbar>
+
+<div class="container" style="padding-top: 5%;padding-bottom: 5%;">
+
+    <div class="row">
+        <div class="col-lg-9"> 
+            <h6 style="opacity:0.5;font-size: small;padding-left: 10px;">FINALISATION DE LA COMMANDE
+            </h6>
+            <form (ngSubmit)="onFormSubmit($event)">
+              <div class="card">
+                     <div class="card-header" >
+                     Adresse <button class="btn btn-outline-info pull-right"  style="width: 20%;font-weight: bold;padding: 2px;" (click)='modifier()' >Modifier</button> </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><i class="fa fa-user-o" aria-hidden="true" style="font-size: 16px;"></i>  {{user.prenom}} {{user.nom}}</h5>
+                    
+                      <!--                 -->
+                      <div class="form-row" >
+                        <div class="form-group col-md-4">
+                          <label for="exampleFormControlInpute4" style="opacity: 0.7;">Adresse</label>
+                          <input type="text" class="form-control" name="adresse" id="exampleFormControlInpute4" placeholder="Adresse" [value]='adresse.lib_adresse' #adresseInput (keyup)='modifier()' >
+
+                           
+                        </div>
+                     <div class="form-group col-md-4">
+                          <label for="exampleFormControlSelect1" style="opacity: 0.7;">Région</label>
+                        <select name="state"  id="exampleFormControlSelect1" [value]='stateCount'  class="rounded-inputs20 select-select form-control" (change)="onChangeState($event.target.value)"  >
+                               <option *ngFor="let country of countries"   [value]="country.id_state">{{country.lib_state}}</option>
+                              </select>
+                        </div>
+                     
+                        <div class="form-group col-md-4">
+                          <label for="sel1" style="opacity: 0.7;">Ville</label>
+                        
+                            <select id="sel1" name="city" [value]="cityCount" class="rounded-inputs20 select-select form-control form-control-line" #adresseInput (change)='modifier()' >
+                                <option *ngFor="let ct of city" [value]="ct.id_city">{{ct.lib_city}}</option>  
+                              </select>
+                        </div>
+                        <label for="exampleFormControlInpute4" style="opacity: 0.7;">Numero telephone</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">+216</span>
+                          </div>
+                          <input type="number" name="phone" class="form-control"   id="validationCustomUsername" [value]='user.tel' placeholder="Téléphone mobile (optionnel)" aria-describedby="inputGroupPrepend"  >
+                        
+                          
+                        </div>
+                        
+                         <!-- 
+                      <div class="form-group">
+                        <label class="col-sm-12">Région</label>
+                        <div class="col-sm-12" >
+                             <select name="state"  id="exampleFormControlSelect1" (OnInit)='getuser()' [value]='stateCount'  class="rounded-inputs20 select-select form-control" (change)="onChangeState($event.target.value)" >
+                               <option *ngFor="let country of countries"   [value]="country.id_state">{{country.lib_state}}</option>
+                              </select>
+                        </div>
+                        <label class="col-sm-12">ville</label>
+                        <div class="col-sm-12">
+                        
+                            <select id="sel1" name="city" [value]="cityCount" (OnInit)='getuser()' class="rounded-inputs20 select-select  form-control form-control-line">
+                                <option *ngFor="let ct of city" [value]="ct.id_city">{{ct.lib_city}}</option>  
+                              </select>
+                        </div>
+                    </div>
+                  -->
+                    
+                      </div>
+
+
+                      <!--                 -->
+                      
+                    </div>
+                   </div>
+                  <div class="card">
+                    <div class="card-header">Livraison  </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Comment voulez-vous que votre commande soit livrée ?</h5>
+                      <ul class="list-group list-group-flush">
+                      <div class="funkyradio">
+                        <li class="list-group-item">
+                            <div class="funkyradio-default">
+                            <input type="radio" name="radio" id="radio1" checked (click)="toggle(false)"/>
+                            <label for="radio1" class="card-title">Livraison Standard</label>
+                            <p>Livré entre <b>{{date1 | date:'EEEE dd MMMM' }} </b>  et <b> {{date2 | date:'EEEE dd MMMM' }} </b>  pour <span style="color:#1E64FE"> 8 TND </span></p>                          
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="funkyradio-primary">
+                            <input type="radio" name="radio" id="radio2" (click)="toggle(true)"/>
+                            <label for='radio2'  class="card-title">Livraison en point relais
+                            </label>
+                        </div>
+                        </li>
+                        </div>
+                    </ul>
+                    </div>
+                    
+                    <div class="w-75" *ngIf="(show)" style="padding-left: 10%;">
+                        <div class="form-group ">
+                          <select name="boutique" class="custom-select" (change)="onChange($event.target.value)">
+                            <option  selected>Choisir boutique</option>
+                            <option *ngFor="let boutique of boutiques"  [value]="boutique.id_boutique" >{{boutique.lib_boutique}}</option>
+                            </select>
+                        </div>
+                        <div style="color: #6D6276;font-weight: bold;" *ngIf='adresse_boutique'>Adresse: {{adresse_boutique}}</div>
+                      </div>
+                  </div>
+                  <button class="btn btn-primary w-100 text-uppercase"   type="submit" style="margin-top: 50px;">Confirmer la commande</button>
+
+              </form>
+ 
+        </div>
+      
+
+
+        <!--                    -->
+        <!--                    -->
+        <!--                    -->
+        <span class="vertical-line d-none d-lg-block" ></span>
+        <style>
+            .vertical-line{
+                border-left: 1px solid #000;
+                display: inline-block;
+                height: 500px;
+                margin: 0 20px;
+                opacity: 0.1;
+            }
+        </style>
+        <div class="col-lg-2">
+            <h6 style="opacity:0.5;font-size: small;padding-left: 10px;">RÉSUMÉ
+            </h6>
+            <div class="card" style="width: 22rem;">
+                <div class="card-header">
+                    VOTRE COMMANDE({{panier.length}} articles) </div>
+
+                <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let prod of panier">
+                                <div class="card-body " >
+                                    <h5 class="card-title">{{prod['designation']}}<img class="card-img-rigth" width="120px" style="  float: left; margin-left: -20px;"  [src]="prod['image']" alt="Card image cap">
+                                    </h5>
+                                    <p class="card-text" style="color: #6998B6;">{{prod['prix']}} TND</p>
+                                  </div>
+                                  <table style="float:right;">
+                                    <tr><td>Taille: </td> <td> {{prod.taille}}
+                                    </td> </tr>
+                                <tr><td>Qté:  </td> <td> {{prod['quantite']}}
+                            </td> </tr>
+                           
+                  
+                           </table>
+            </li>
+            <div class="card-footer bg-white"  >
+                <tr><td style="width: 60%;font-size: 16px;">Sous Total  </td> <td  style="width: 20%; font-size: 16px;text-align: right;color: #7797AD; ">{{total}} TND
+                </td> </tr>
+                <tr><td style="width: 60%;font-size: 16px;">Montant de livraison</td> <td  style="width: 20%; font-size: 16px;text-align: right;color: #7797AD; ">{{montant_livraison}} TND
+                </td> </tr>
+              </div>
+              <div class="card-footer ">
+              
+                <tr><td style="width: 60%;font-size: 18px;">Total  </td> <td  style="width: 20%; font-size: 18px;text-align: right;color: #1E64FE;font-weight:bold">{{total+montant_livraison}} TND
+                </td> </tr>
+              </div>
+
+                </ul>
+              </div>
+             </div>
+        
+        </div>
+
+        </div>
+
+
+<app-footer></app-footer>

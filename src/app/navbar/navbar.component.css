@@ -1,0 +1,13 @@
+
+  .navbar{
+    background-color: #e5f2fa;
+}
+
+   .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.navbar-nav.navbar-center>li {
+ margin-left: 50px;
+}

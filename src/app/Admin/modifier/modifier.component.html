@@ -1,0 +1,67 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container ">
+    <h1>Modifier Produit</h1>
+  <form #userForm (ngSubmit)="onFormSubmit($event)" >
+   
+    <div class="form-group ">
+      <input required type="text" id="exampleInputdesignation1" class="form-control"  name="id" aria-describedby="designationHelp"  [value]="article.id_article" hidden>
+      </div>
+      <div class="form-group row">
+        <label for="inputId3" class="col-sm-1 col-form-label">Id</label>
+
+        <input required type="text" class="col-sm-10" id="exampleInputdesignation1" name="id2" aria-describedby="designationHelp"  [value]="article.id_article" disabled>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignation1" name="designation" aria-describedby="designationHelp"  [value]="article.designation">
+      </div>
+      <div class="form-group">
+          <input  type="number" class="form-control"  id="exampleInputprix1" name="prix" aria-describedby="prixHelp"  [value]="article.prix" required>
+        </div>
+  
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControldescription_article1" rows="3" name="description_article" [value]="article.description_article"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control"  id="exampleInputtva1" name="tva" aria-describedby="tvaHelp"  [value]="article.taux_tva">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control"  id="exampleInputremise1" name="remise" aria-describedby="remiseHelp"  [value]="article.taux_remise">
+        </div> 
+     
+        <select class="form-control form-control-sm"  name="categorie">
+            <option  [value]="article.categorie.id_categorie">--{{article.categorie.categorie_lib}}--</option>
+
+          <option  *ngFor="let categorie of categories" [value]="categorie.id_categorie">{{categorie.categorie_lib}}</option>
+        </select>
+        <br>
+        <select class="form-control form-control-sm"  name="gender">
+            <option  [value]="article.gender.id_gender">--{{article.gender.gender_lib}}--</option>
+
+          <option  *ngFor="let gender of genders" [value]="article.gender.id_gender">{{gender.gender_lib}}</option>
+        </select>
+        <br>
+       
+        <div class="custom-file">
+          <input class="custom-file-input"
+          type="file" id="file" name="file"  (change)="onFileChanged($event)" 
+          accept="image/x-png"
+          #file>
+          <label class="custom-file-label" for="validatedCustomFile" (click)="file.click()">Choisir une image...</label>
+         </div>
+
+         <div class="row" >
+           <div class="col-2" *ngFor="let qua of article.taille_prod">
+            <span  >{{qua.taille.lib_taille}}<br></span>
+            <input  type="text" id="exampleInputdesignation1" class="form-control"  name="idtaille" aria-describedby="designationHelp"  [value]="qua.id_taille_prod"  hidden>
+            <input   type="number" class="form-control"  (change)="updateQuantite($event.target.value,$event.target.name,$event.target.alt)"  [name]="qua.id_taille_prod" [alt]="qua.taille.id_taille" [value]="qua.quantite" required>
+          </div>
+         
+         </div>
+     <br>
+        <br>
+ 
+       
+      <button  class="btn btn-primary">Modifier</button>
+    </form>
+  </div>

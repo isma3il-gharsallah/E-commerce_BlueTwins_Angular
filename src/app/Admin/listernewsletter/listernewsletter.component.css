@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+  }
+  .mat-row{
+    background-color:rgb(255, 255, 255,0.5);
+    }
+ 
+    .mat-header-row{
+      background-color:rgb(199, 199, 199,0.5);
+      color: black ;
+       }
+       mat-paginator{
+        background-color:rgba(58, 58, 58, 0.7);
+      
+       }

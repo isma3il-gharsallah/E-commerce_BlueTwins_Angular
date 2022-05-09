@@ -1,0 +1,24 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container ">
+    <h1>Modifier Gender</h1>
+  <form #userForm  [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" name='f'>
+   
+    <div class="form-group ">
+      <input required type="text" id="exampleInputlibcategorie1" class="form-control"  name="id" aria-describedby="idHelp"  [value]="gender.id_gender" hidden>
+      </div>
+      <div class="form-group row">
+        <label for="inputId3" class="col-sm-1 col-form-label">Id</label>
+
+        <input required type="text" class="col-sm-10" id="exampleInputdesignation1" name="id2" aria-describedby="id2Help"  [value]="gender.id_gender" disabled>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignation1" name="gender_lib" aria-describedby="designationHelp"  [value]="gender.gender_lib" [ngClass]="{ 'is-invalid': submitted && f.gender_lib.errors }" formControlName="gender_lib">
+        <div *ngIf="submitted && f.gender_lib.errors" class="invalid-feedback">
+          <div *ngIf="f.gender_lib.errors.required"> libellée Mode obligatoire</div>
+      </div>
+      </div>
+       
+      <button  class="btn btn-primary">Modifier</button>
+    </form>
+  </div>

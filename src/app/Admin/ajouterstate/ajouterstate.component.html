@@ -1,0 +1,17 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter State</h1>
+  
+  <form  [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="lib_state" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.lib_state.errors }" formControlName="lib_state"  >
+        <div *ngIf="submitted && f.lib_state.errors" class="invalid-feedback">
+          <div *ngIf="f.lib_state.errors.required"> libellée state obligatoire</div>
+      </div>
+      </div>
+
+      <button  class="btn btn-primary">Ajouter</button>
+  </form>
+</div>

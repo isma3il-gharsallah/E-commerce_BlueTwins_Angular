@@ -1,0 +1,25 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter City</h1>
+  <form  [formGroup]="registerForm"  (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="lib_city" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.lib_city.errors }" formControlName="lib_city"  >
+        <div *ngIf="submitted && f.lib_city.errors" class="invalid-feedback">
+          <div *ngIf="f.lib_city.errors.required"> libellée city obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="zip_code" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.zip_code.errors }" formControlName="zip_code"   >
+        <div *ngIf="submitted && f.zip_code.errors" class="invalid-feedback">
+          <div *ngIf="f.zip_code.errors.required"> zipe code   obligatoire</div>
+      </div>
+      </div>
+      <select class="form-control form-control-sm"  name="state">
+        <option  *ngFor="let state of states" [value]="state.id_state">{{state.lib_state}}</option>
+      </select>
+<br>
+      <button  class="btn btn-primary">Ajouter</button>
+  </form>
+</div>

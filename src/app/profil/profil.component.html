@@ -1,0 +1,133 @@
+<app-navbar-espace-client></app-navbar-espace-client>
+
+<aside class="left-sidebar">
+    
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                
+                <li> <a class="waves-effect waves-dark" routerLinkActive="active"  routerLink="/voscommande" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Vos commande</span></a></li>
+                <li> <a class="waves-effect waves-dark" routerLink="/favorie" ria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu"></span>Votre liste d'envies</a></li>
+                <li> <a class="waves-effect waves-dark" routerLinkActive="active"  routerLink="/modifiermdp"aria-expanded="false"><i class="fa fa-warning" style="font-size:15px;color:red"></i><span class="hide-menu"></span>Modifier votre mot de passe
+                </a></li>
+                
+            </ul>
+        </nav>
+        </div>
+  
+    <!-- End Sidebar scroll-->
+</aside>
+<div class="page-wrapper"> 
+
+
+    
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center " >
+                <h4 class="text-themecolor">Profile</h4>
+            </div>
+      
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <!--
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="m-t-30"> <img src="../assets/images/users/5.jpg" class="img-circle" width="150" />
+                            <h4 class="card-title m-t-10">Hanna Gover</h4>
+                            <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                            <div class="row text-center justify-content-md-center">
+                                <div class="col-4"><a href="javascript:void(0)" class="link" class="font-medium"><i class="icon-people"></i> </a></div>
+                                <div class="col-4"><a href="javascript:void(0)" class="link" class="font-medium"><i class="icon-picture"></i> </a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             Column -->
+           
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-7 " style="margin-left: 15%;">
+                <div class="card">
+                    <!-- Tab panes -->
+                    <div class="card-body">
+                        <form class="form-horizontal form-material" (ngSubmit)="onFormSubmit($event)">
+                            <div class="form-group">
+                                <label class="col-md-12">Nom</label>
+                                <div class="col-md-12">
+                                    <input type="text" [value]="user.nom"  name="nom" class="form-control form-control-line">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Prenom</label>
+                                <div class="col-md-12">
+                                    <input type="text"[value]="user.prenom" name="prenom" class="form-control form-control-line">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-12">Numero telephone</label>
+                                <div class="col-md-12">
+                                    <input type="text" [value]="user.tel" name="tel" class="form-control form-control-line">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Adresse</label>
+                                <div class="col-md-12">
+                                    <input type="text" [value]="user.adresse.lib_adresse" name="adresse" class="form-control form-control-line">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12">Région</label>
+                                <div class="col-sm-12" >
+                                     <select name="state"  id="exampleFormControlSelect1" (OnInit)='getuser()' [value]='stateCount'  class="rounded-inputs20 select-select form-control" (change)="onChangeState($event.target.value)" >
+                                       <option *ngFor="let country of countries"   [value]="country.id_state">{{country.lib_state}}</option>
+                                      </select>
+                                </div>
+                                <label class="col-sm-12">ville</label>
+                                <div class="col-sm-12">
+                                
+                                    <select id="sel1" name="city" [value]="cityCount" (OnInit)='getuser()' class="rounded-inputs20 select-select  form-control form-control-line">
+                                        <option *ngFor="let ct of city" [value]="ct.id_city">{{ct.lib_city}}</option>  
+                                      </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success">Update Profile</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div> <br>
+
+

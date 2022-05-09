@@ -1,0 +1,28 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container ">
+    <h1>Ajouter taille produit</h1>
+  <form #userForm (ngSubmit)="onFormSubmit($event)" >
+    
+    <select class="form-control form-control-sm"  name="taille">
+        <option  *ngFor="let taille of tailles" [value]="taille.id_taille">{{taille.lib_taille}}</option>
+      </select>
+    
+    
+    
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputquantite1" name="quantite" aria-describedby="quantiteHelp"  placeholder="Enter quantite">
+      </div>
+
+<select class="form-control form-control-sm"  name="article">
+    <option  *ngFor="let article of articles" [value]="article.id_article">{{article.designation}}</option>
+  </select>
+
+
+<br>
+      <br>
+
+      
+    <button  class="btn btn-primary"> Ajouter </button>
+</form>
+
+</div>

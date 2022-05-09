@@ -1,0 +1,21 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter Etat commande</h1>
+  <form  [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="etatcmd" aria-describedby="etatcmdHelp" [ngClass]="{ 'is-invalid': submitted && f.etatcmd.errors }" formControlName="etatcmd"  >
+        <div *ngIf="submitted && f.etatcmd.errors" class="invalid-feedback">
+          <div *ngIf="f.etatcmd.errors.required"> etat commande  obligatoire</div>
+      </div>
+      </div>
+
+
+ 
+
+
+
+      <button  class="btn btn-primary">Ajouter</button>
+  </form>
+</div>

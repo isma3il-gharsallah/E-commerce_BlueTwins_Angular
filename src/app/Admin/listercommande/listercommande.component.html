@@ -1,0 +1,71 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1>Gere Commande</h1>
+            </div>
+        </div>
+    </div>
+    
+      <div class="search-hero col-lg-5">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Recherche...">
+      </div><br>
+    <div class="row">
+        <div class="col-lg-12">
+      
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" style="background: transparent;" >
+  
+      <ng-container matColumnDef="id_cmd">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> ID    </th>
+        <td mat-cell *matCellDef="let element"  style="color: black;"> {{element.id_cmd}} </td>
+      </ng-container>
+  
+       
+  
+      <ng-container matColumnDef="Articles">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;">  Articles  </th>
+        <td mat-cell *matCellDef="let element" style="color: black;">    {{element.commande_prod.length}}  Article </td>
+      </ng-container>  
+  
+      <ng-container matColumnDef="prix_total">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> prix total </th>
+        <td mat-cell *matCellDef="let element" style="color: black;">   {{element.prix_total}} </td>
+      </ng-container>   
+  
+      <ng-container matColumnDef="date_cmd">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> date commande </th>
+        <td mat-cell *matCellDef="let element" style="color: black;">  passée le {{element.date_cmd}} </td>
+      </ng-container>  
+  
+      <ng-container matColumnDef="etatcmd">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"   >  Etat</th>
+        <td mat-cell *matCellDef="let element" style="color: black;" >    
+          <span style="width: 100px;text-align:center;  font-size: 14px;" *ngIf="element.etatcommande.etatcmd=='Livré'" class="label label-success font-size=20px">{{element.etatcommande.etatcmd}} </span>
+          <span  style="width: 100px;text-align:center;  font-size: 14px;" *ngIf="element.etatcommande.etatcmd=='Annulé'" class="label label-danger font-size=20px">{{element.etatcommande.etatcmd}} </span>
+          <span style="width: 100px;text-align:center; font-size: 14px;" *ngIf="element.etatcommande.etatcmd=='En attente de confirmation'" class="label label-warning font-size=20px">{{element.etatcommande.etatcmd}} </span>
+          <span style="width: 100px;text-align:center; font-size: 14px;" *ngIf="element.etatcommande.etatcmd=='Confirmé'" class="label label-info font-size=20px">{{element.etatcommande.etatcmd}} </span>
+      
+        </td>
+      </ng-container>  
+  
+     
+  
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> Action </th>
+        <td mat-cell *matCellDef="let element">
+           <a   [routerLink]="['/espace_admin/staff/modifier/',element.id_cmd]"><i class="fa fa-edit" style="color: blue;font-size: 20px;"></i></a>
+           &nbsp; &nbsp; &nbsp; <a (click)="supprimer(element.id_cmd)" ><i class="fa fa-trash-o  " style="color: red;font-size: 20px;"></i></a> 
+        </td>
+      </ng-container>
+   
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 20,50]"  showFirstLastButtons></mat-paginator>
+  </div>
+  

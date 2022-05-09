@@ -1,0 +1,24 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container ">
+    <h1>Modifier Privilege</h1>
+  <form #userForm   [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" name='f'>
+   
+    <div class="form-group ">
+      <input required type="text" id="exampleInputlibcategorie1" class="form-control"  name="id" aria-describedby="idHelp"  [value]="privilege.id_privilege" hidden>
+      </div>
+      <div class="form-group row">
+        <label for="inputId3" class="col-sm-1 col-form-label">Id</label>
+
+        <input required type="text" class="col-sm-10" id="exampleInputdesignation1" name="id2" aria-describedby="id2Help"  [value]="privilege.id_privilege" disabled>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignation1" name="lib_privilege" aria-describedby="designationHelp"  [value]="privilege.lib_privilege" [ngClass]="{ 'is-invalid': submitted && f.lib_privilege.errors }" formControlName="lib_privilege" >
+        <div *ngIf="submitted && f.lib_privilege.errors" class="invalid-feedback">
+          <div *ngIf="f.lib_privilege.errors.required"> libellée privilege obligatoire</div>
+      </div>
+      </div>
+       
+      <button  class="btn btn-primary">Modifier</button>
+    </form>
+  </div>

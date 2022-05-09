@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Blue Twins</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isLoggedIn">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+       
+      <!--dropdown ajouter-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Ajouter</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/espace_admin/article/ajouter']">produit</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/categorie/ajouter']">categorie</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/taille/ajouter']">taille</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/tailleprod/ajouter']">tailleprod</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/gender/ajouter']">gender</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/boutique/ajouter']">boutique</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/privilege/ajouter']">privilege</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/modelivraison/ajouter']">mode livraison</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/etatcommande/ajouter']">etat commande</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/state/ajouter']">State</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/city/ajouter']">city</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/staff/ajouter']">staff</a>
+
+
+ 
+        </div>
+      </li>
+       <!--dropdown ajouter-->
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Lister        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/espace_admin/article/lister']">produit</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/categorie/lister']">categorie</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/taille/lister']">taille</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/gender/lister']">gender</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/boutique/lister']">boutique</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/privilege/lister']">privilege</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/modelivraison/lister']">mode livraison</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/etatcommande/lister']">etat commande</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/compte/lister']">compte</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/newsletter/lister']">newsletter</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/staff/lister']">staff</a>
+          <a class="dropdown-item" [routerLink]="['/espace_admin/commande/lister']">commande</a>
+
+
+
+          
+        </div>
+      </li>
+       
+    </ul>
+     
+   
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a  class="nav-link" >{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </div>
+</nav>

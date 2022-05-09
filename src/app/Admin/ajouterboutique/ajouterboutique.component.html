@@ -1,0 +1,62 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter boutique</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="lib_boutique" aria-describedby="categorielibHelp" placeholder="Enter NOM BOUTIQUE" [ngClass]="{ 'is-invalid': submitted && f.lib_boutique.errors }" formControlName="lib_boutique">
+        <div *ngIf="submitted && f.lib_boutique.errors" class="invalid-feedback">
+          <div *ngIf="f.lib_boutique.errors.required">libellé boutique obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="exampleFormControldescription_boutique1" rows="3" name="description_boutique" placeholder="Enter description"  [ngClass]="{ 'is-invalid': submitted && f.description_boutique.errors }" formControlName="description_boutique"></textarea>
+        <div *ngIf="submitted && f.description_boutique.errors" class="invalid-feedback">
+          <div *ngIf="f.description_boutique.errors.required">description boutique obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationmail_boutique1" name="mail_boutique" aria-describedby="mail_boutiqueHelp" placeholder="Enter mail boutique" [ngClass]="{ 'is-invalid': submitted && f.mail_boutique.errors }" formControlName="mail_boutique">
+        <div *ngIf="submitted && f.mail_boutique.errors" class="invalid-feedback">
+          <div *ngIf="f.mail_boutique.errors.required">mail boutique obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <input required type="number" class="form-control" id="exampleInputdesignationtel_boutique1" name="tel_boutique" aria-describedby="tel_boutiquebHelp"  placeholder="Enter telephone boutique" [ngClass]="{ 'is-invalid': submitted && f.tel_boutique.errors }" formControlName="tel_boutique">
+        <div *ngIf="submitted && f.tel_boutique.errors" class="invalid-feedback">
+          <div *ngIf="f.tel_boutique.errors.required">telephone boutique  obligatoire</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationtel_boutique1" name="adresse" aria-describedby="adresse_boutiquebHelp"  placeholder="Enter adresse boutique" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" formControlName="adresse">
+        <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+          <div *ngIf="f.adresse.errors.required">adresse obligatoire</div>
+      </div>
+      </div>
+    
+    
+
+      <div class="form-row">
+        
+        <div class="form-group col-md-4">
+          <label for="exampleFormControlSelect1">Région</label>
+          <select name="state"  id="exampleFormControlSelect1" class="rounded-inputs20 select-select form-control" (change)="onChange($event.target.value)">
+            <option *ngFor="let country of countries"  [value]="country.id_state">{{country.lib_state}}</option>
+            </select>
+        </div>
+     
+        <div class="form-group col-md-4">
+          <label for="sel1">Ville</label>
+          <select id="sel1" name="city" class="rounded-inputs20 select-select  form-control">
+            <option *ngFor="let city of cities" [value]="city.id_city">{{city.lib_city}}</option>  
+        
+          </select>
+        </div>
+
+      </div>
+
+
+      <button  class="btn btn-primary">Ajouter</button>
+  </form>
+</div>

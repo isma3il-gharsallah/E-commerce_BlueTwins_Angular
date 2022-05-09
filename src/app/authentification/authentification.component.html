@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+
+<div class="container" style="padding-top: 5%;padding-bottom: 5%;">
+
+<div class="row">
+    <div class="col-lg-5">
+        <form   (ngSubmit)="onAuthentifier($event)">
+            
+            <h2 class="text-center">Se connecter</h2><br><br><br>
+            <div class="alert alert-danger text-center" style="opacity: 0.7;" role="alert" *ngIf='incorrecte'>
+                <a class="alert-link">Email</a>  ou  <a class="alert-link">mot de passe</a>  incorrect.
+              </div>
+            <div class="form-group row text-center">
+                 <div class="col-sm-12">
+                  <input type="text" class="form-control" name="login1" id="inputPassword" placeholder="Email" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                 <div class="col-sm-12">
+                  <input type="password" class="form-control" name="password1" id="inputPassword" placeholder="Password">
+                </div>
+              </div>
+              
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-6 col-form-label">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Rester connecté</label>
+        
+                      </div>
+                </label>
+                <div class="col-sm-6">
+                     <label  class="pull-right"><a href="" >Mot de passe oublié ?</a></label>
+
+                </div>
+              </div>
+             <br>
+         
+             <div class="text-center"> 
+                <input type="submit" class="btn btn-primary col-sm-12" value="Se connecter">
+
+           </div>
+        </form>
+       
+          <br><br><br>
+    </div>
+    <span class="vertical-line d-none d-lg-block" ></span>
+    <style>
+        .vertical-line{
+            border-left: 2px solid #000;
+            display: inline-block;
+            height: 500px;
+            margin: 0 20px;
+            opacity: 0.1;
+        }
+    </style>
+    <div class="col-lg-6">
+            <form   [formGroup]="registerForm" #userForm (ngSubmit)="onFormSubmit($event)"  >
+                <h2 class="text-center">Créer un compte</h2><br><br><br>
+                <div class="alert alert-danger text-center" style="opacity: 0.7;" role="alert" *ngIf='Mail_exist'>
+                  <a class="alert-link">Email</a> déjà utilisé.
+                </div>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" formControlName="nom" name="nom" id="inputFirstName" placeholder="Nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                      <div *ngIf="f.nom.errors.required">nom obligatoire</div>
+                                  </div>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                        <input type="text" class="form-control" formControlName="prenom" name="prenom" id="inputLastName" placeholder="Prénom" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
+                                        <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                          <div *ngIf="f.prenom.errors.required">prenom obligatoire</div>
+                                      </div>
+                                      </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                               <input type="text" class="form-control" formControlName="email" name="login2" id="inputEmail" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">email obligatoire</div>
+                            </div>
+                              </div>
+                              <div class="form-group col-md-6">
+                                    <input type="password" class="form-control" formControlName="password" name="password2" id="inputpassword" placeholder="Mot de passe" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                      <div *ngIf="f.password.errors.required">mot de pass obligatoire</div>
+                                  </div>
+                                  </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">+216</span>
+                    </div>
+                    <input type="number" class="form-control" pattern="[0-9]{8}" name="tel" formControlName="tel"  id="validationCustomUsername" placeholder="Téléphone mobile (optionnel)" aria-describedby="inputGroupPrepend" required [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                      <div *ngIf="f.tel.errors.required">numero telephone obligatoire</div>
+                  </div>
+                    <div class="invalid-feedback">
+                      Numero tel
+                    </div>
+                  </div>
+                  <br>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2" style="opacity: 0.8;font-size: 15px;">Je souhaite recevoir la newsletter de Blue Twins avec les meilleures offres du jour.</label>
+                  </div>
+                <br>
+             
+             
+                    <div class="text-center"> 
+                         <input type="submit" class="btn btn-primary col-sm-12  " value="Créer un compte">
+
+                    </div>
+                  </form>
+        </div>
+    
+    </div>
+    </div>
+    <app-footer></app-footer>

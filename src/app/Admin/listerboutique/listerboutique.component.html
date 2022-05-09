@@ -1,0 +1,76 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1>Gere boutique</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12  col-md-6">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Recherche...">
+      </div>
+
+      <div class="col-sm-12 col-md-6 text-right">
+          <button class="btn  btn-success text-uppercase" style="font-size: 15px;"   [routerLink]="['/espace_admin/boutique/ajouter']" >ajouter boutique</button>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+ 
+  
+  
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" style="background: transparent;" >
+  
+      <ng-container matColumnDef="id_boutique">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> ID    </th>
+        <td mat-cell *matCellDef="let element"  style="color: black;"> {{element.id_boutique}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="libelé_boutique">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> libelle boutique </th>
+        <td mat-cell *matCellDef="let element" style="color: black;"> {{element.lib_boutique}} </td>
+      </ng-container>  
+    
+      
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> description  </th>
+        <td mat-cell *matCellDef="let element" style="color: black;"> {{element.description_boutique}} </td>
+      </ng-container>  
+      
+      <ng-container matColumnDef="mail_boutique">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> mail </th>
+        <td mat-cell *matCellDef="let element" style="color: black;">   {{element.mail_boutique}} </td>
+      </ng-container>  
+      
+      <ng-container matColumnDef="tel_boutique">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;">  telephone </th>
+        <td mat-cell *matCellDef="let element" style="color: black;"> {{element.tel_boutique}} </td>
+      </ng-container>  
+   
+      <ng-container matColumnDef="adresse">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;">   adresse </th>
+        <td mat-cell *matCellDef="let element" style="color: black;"> {{element.adresse.lib_adresse}} </td>
+      </ng-container>  
+       
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> Action </th>
+        <td mat-cell *matCellDef="let element">
+           <a   [routerLink]="['/espace_admin/boutique/modifier/',element.id_boutique]"><i class="fa fa-edit" style="color: blue;font-size: 20px;"></i></a>
+           &nbsp; &nbsp; &nbsp; <a (click)="supprimer(boutique.id_boutique)" ><i class="fa fa-trash-o  " style="color: red;font-size: 20px;"></i></a> 
+        </td>
+      </ng-container>
+   
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 20,50]"  showFirstLastButtons></mat-paginator>
+  </div>
+  </div>
+  </div>

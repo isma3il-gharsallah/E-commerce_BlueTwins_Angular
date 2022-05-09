@@ -1,0 +1,90 @@
+
+	
+  <app-navbar></app-navbar>
+  
+  <div  class="product-grid"  style="margin-top: 50px;">
+	
+	  <div class="container" style=" padding-top: 50px;">
+		<div class="row">
+		  <div class="col-lg-3" > 
+		   <h3 style="padding-bottom: 5%;">{{mode}}</h3> 
+		   <br>
+		   
+		   <label class="my-1 mr-2" for="inlineFormCustomSelectPref"  ><b>Categorie</b></label>
+  
+			<ul class="list-group" 	*ngFor="let categorie of categories">
+		  <li class="list-group-item" style="background-color: transparent; border: none;" (click)='changeCategorie(categorie.categorie_lib)'>
+		  
+			  <i class="fa fa-chevron-right" aria-hidden="true" *ngIf='categorie.categorie_lib==cat' style="color: #0db9f0;"><b>   {{categorie.categorie_lib}}</b>
+			  </i>
+			  <span  *ngIf='categorie.categorie_lib!=cat' style="cursor: grab;">{{categorie.categorie_lib}}</span>
+  
+		  </li>
+		  
+			  
+			</ul>
+		  
+		   <!--	<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Prix</label>
+			  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="Price" formControlName="filterProduct">
+				<option *ngFor="let k of PriceFilter; let i = index;"
+				[ngValue]="getValue(i)">
+				{{ getValue(i).displayText }}
+			  </select>
+			  -->
+			  <label class="my-1 mr-2" for="inlineFormCustomSelectPref" style="padding-bottom: 5%; padding-top:20% ;"><b>Prix TTC</b></label>
+			  <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" style="margin-bottom: 20%;"></ng5-slider>
+  
+   
+		  
+		  </div>
+		  <div class="col-lg-9">
+			<div class="col-lg-9"  >
+				<div style="margin-bottom: 20px;">
+			  <b  > Trier par 	<a (click)="trier()">Prix <i class="fa fa-sort"  style="font-size: 15px;"   aria-hidden="true"></i>
+  
+			  </a>
+			 </b>
+		  </div>
+	  <!--	  </div>
+	<div  class="product-grid row" >
+		  <div *ngFor="let item of articlese" class=" col-lg-4 product-item ">
+	
+			<div class="product discount product_filter" >
+			  <div class="product_image" style="background-color: #e5f2fa; ">
+				<img src="{{item.img}}"  height="250px"  alt="" style="display: block;margin-left: auto;margin-right: auto;">
+			  </div>
+			  <div class="product_info">
+				<h6 class="product_name"><b><a [routerLink]="['/produit' , item.id, item.cat]">{{item.nom}}</a></b></h6>
+				<div class="product_price">{{item.prix}}<span>DT</span></div>
+			  </div>
+	
+			</div>
+		  </div>
+		</div>
+	  -->
+	  <div >
+		  <!-- sinner -->
+		  
+		   <div class="row" *ngFor="let ar of filteredProducts ">
+			  
+			 <div class="card col-xs-12 col-sm-6 col-lg-4 col-xl-4 col-md-6" *ngFor="let article of ar | orderBy: prix:rev">
+			   <a  [routerLink]="['/detail',article.id_article]"> 
+				 <img class="card-img-top" [src]="article.img_article" alt="Card image cap"   >
+				 <div class="card-body">
+				   <h5 class="card-title">{{article.designation}}</h5>
+				   <p class="card-text"><small class="text-muted">{{article.prix}} TND</small></p>
+				 </div>
+			   </a> 
+   
+			 </div>               
+		   </div>
+		  </div>
+	  </div>
+	</div>
+	</div>
+	</div>
+  
+  
+  <app-footer></app-footer>
+  
+  

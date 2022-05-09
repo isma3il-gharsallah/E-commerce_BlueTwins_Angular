@@ -1,0 +1,82 @@
+     <app-navbar-admin></app-navbar-admin>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1>Gere Commande</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10 " style="margin-left: 15%;"  >
+    <div class="card "  >
+        <div class="card-head "  >
+            <h5 class="card-header" ><i class="fa fa-arrow-left"  routerLinkActive="active"  [routerLink]="['/espace_admin/commande/lister']" ></i>  Détails de la commande  </h5>
+           <div class='row'>
+                 <div class="card-body col-4">
+                    <h5  class="card-header" style="font-weight: bold;">Commande</h5>
+
+                     <div  style="padding-left: 20px;padding-top: 20px;">
+                        <p>Commande N° <b> {{ commandes.id_cmd}}</b></p>
+                         <p>Placée le <b> {{ commandes.date_cmd}}</b></p>
+                        <p>Prix total:<b> {{commandes.prix_total}} TND</b></p>
+                     </div>
+                </div>
+                <div class="card-body col-4">
+                    <h5  class="card-header" style="font-weight: bold;">livraison</h5>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;"> Methode de livraison </h6>
+                  <div *ngIf='!commandes.boutique '>
+                        <p> Livraison domicile</p>
+                        <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;"> Adresse de livraison</h6>
+                        <!--<p>{{user.nom}} {{user.prenom}}</p>-->
+                        <p>{{commandes.adresse.lib_adresse}}</p>
+                        <p> {{commandes.adresse.city.lib_city}}, {{commandes.adresse.city.state}}</p>
+                    </div>
+                    <div *ngIf='commandes.boutique'>
+                        <p> Livraison en point relais </p>
+                        <h6 class="card-subtitle mb-2 text-muted" style="font-weight: bold;"> Adresse de boutique</h6>
+                        <p>{{commandes.boutique.lib_boutique}}</p>
+                        <p>{{commandes.boutique.adresse.lib_adresse}}, {{commandes.boutique.adresse.city.lib_city}}, {{commandes.boutique.adresse.city.state}}</p>
+                    </div> 
+                </div>
+                <div class="card-body col-4">
+                    <h5  class="card-header" style="font-weight: bold;">Client</h5>
+
+                     <div  style="padding-left: 20px;padding-top: 20px;">
+                        <p>Nom:<b> {{ client.nom}} </b></p>
+                        <p>Prenom:<b>  {{ client.prenom}} </b></p>
+                         <p>Numero tel:<b> {{ client.tel}}</b></p>
+                     </div>
+                </div>
+            </div>
+            <div class="card-body"  >
+                <h5  class="card-header" style="font-weight: bold;margin-bottom: 30px;"  >ARTICLES DANS LA COMMANDE</h5>
+                <div class="card flex-row flex-wrap"  *ngFor="let article of commandes.commande_prod">
+                    <div class="card-header border-0">
+                        <img [src]="article.article.img_article" width="150px" alt="">
+                    </div>
+                    <div class="card-block px-2">
+                        <h4 class="card-title"><b>{{article.article.designation}}</b></h4>
+                        <p>Ttaille : {{article.taille}}</p>
+                        <p>Prix {{article.article.prix}} TND</p>
+                        <p>Quantité : {{article.quantite}} </p>
+                    </div>
+                    <div class="w-100"></div>          
+                </div>
+                <form #userForm   (ngSubmit)="onFormSubmit($event)"  >
+
+                <h5  class="card-header" style="font-weight: bold;">Etat commande 
+                    <select  class="  form-control-sm"  name="etatcmd">        
+                        <option  *ngFor="let etatcommande of etatcommandes" [value]="etatcommande.id_etatcmd">{{etatcommande.etatcmd}}</option>
+                       </select>
+                </h5>
+
+                    
+                                <br>
+                                <button  class="btn btn-primary" >Modifier</button>
+                            </form>
+            </div>          
+        </div>
+    </div>
+</div>

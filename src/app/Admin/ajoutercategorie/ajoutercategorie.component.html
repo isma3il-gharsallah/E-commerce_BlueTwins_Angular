@@ -1,0 +1,24 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="d-flex text-center justify-content-center">
+  <div class="col-md-3" style="padding-top: 2%;">
+     <h1  >Ajouter categorie</h1>
+  <form  [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" class=" w-100 " style="padding-top: 5%;">
+    <div class="form-group" >
+        <input  required type="text" class="form-control" placeholder="categorie" id="exampleInputdesignationcategorie_lib1" name="categorie_lib" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.categorie_lib.errors }" formControlName="categorie_lib"  >
+        <div *ngIf="submitted && f.categorie_lib.errors" class="invalid-feedback">
+          <div *ngIf="f.categorie_lib.errors.required"> libellée categorie obligatoire</div>
+      </div>
+      <br>
+
+ 
+  <div *ngFor="let item of genders">
+    <input type="checkbox" [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}"><span>{{item.gender_lib}}</span>
+</div>
+<span hidden>{{this.result | json}}</span>
+      </div>
+
+      <button  class="btn btn-primary   w-100 " >Ajouter</button>
+  </form>
+ </div>
+</div>

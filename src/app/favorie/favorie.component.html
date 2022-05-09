@@ -1,0 +1,68 @@
+<app-navbar-espace-client></app-navbar-espace-client>
+
+<aside class="left-sidebar">
+    
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li> <a class="waves-effect waves-dark" routerLinkActive="active"  routerLink="/profil" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">profile</span></a></li>
+                <li> <a class="waves-effect waves-dark" routerLink="/voscommande"><i  class="fa fa-table"></i><span class="hide-menu"></span>vos commande</a></li>
+                <li> <a class="waves-effect waves-dark" routerLinkActive="active"  routerLink="/modifiermdp" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu"></span>Modifier votre mot de passe
+                </a></li>
+              
+            </ul>
+        </nav>
+        </div>
+  
+    <!-- End Sidebar scroll-->
+</aside>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center ">
+                <h4 class="text-themecolor">Votre liste d'envies</h4>
+            </div>
+      
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row" style="padding-left: 5%;">
+            <!-- column -->
+ 
+                <div class="card" style="width: 18rem;" *ngFor="let favorie of favoris" >
+                  <img [src]="favorie.article.img_article" class="card-img-top" width="50%" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{favorie.article.designation}}</h5>
+                    <div class="card-body" style="opacity: 0.8;">
+              
+                      <button type="button"  class="btn btn-success col-6" [routerLink]="['/detail',favorie.article.id_article]">Voir detail</button>
+                      <button type="button" class="btn btn-danger col-6" (click)="Supprimer(favorie.article.id_article)">Supprimer</button>
+                    </div>
+                  </div>
+                
+                </div>
+              
+         </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div> <br>
+
+
+
+ 

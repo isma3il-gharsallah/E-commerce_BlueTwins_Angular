@@ -1,0 +1,22 @@
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="container ">
+    <h1>Ajouter Taille</h1>
+  
+  <form  [formGroup]="registerForm" (ngSubmit)="onFormSubmit($event)" >
+    <div class="form-group">
+        <input required type="text" class="form-control" id="exampleInputdesignationcategorie_lib1" name="lib_taille" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.lib_taille.errors }" formControlName="lib_taille"  >
+        <div *ngIf="submitted && f.lib_taille.errors" class="invalid-feedback">
+          <div *ngIf="f.lib_taille.errors.required"> libellée Taille obligatoire</div>
+      </div>
+      </div>
+      <select class="form-control form-control-sm"  name="categorie_lib" aria-describedby="categorielibHelp" [ngClass]="{ 'is-invalid': submitted && f.categorie_lib.errors }" formControlName="categorie_lib">
+        <option  *ngFor="let categorie of categories" [value]="categorie.id_categorie">{{categorie.categorie_lib}}</option>
+        <div *ngIf="f.categorie_lib.errors"> libellée categorie obligatoire</div>
+
+      </select>
+<br>
+      <button  class="btn btn-primary">Ajouter</button>
+  </form>
+</div>

@@ -1,0 +1,76 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1>Gere Produit</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12  col-md-6">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Recherche...">
+      </div>
+
+      <div class="col-sm-12 col-md-6 text-right">
+          <button class="btn  btn-success text-uppercase" style="font-size: 15px;"   [routerLink]="['/espace_admin/article/ajouter']" >ajouter produit</button>
+      </div>
+  </div>
+       
+       <br>
+    <div class="row">
+        <div class="col-lg-12">
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" style="background: transparent;" >
+
+    <ng-container matColumnDef="id_article">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> ID    </th>
+      <td mat-cell *matCellDef="let element"  style="color: black;"> {{element.id_article}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="designation">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> Designation </th>
+      <td mat-cell *matCellDef="let element" style="color: black;"> {{element.designation}} </td>
+    </ng-container>  
+  
+    
+    <ng-container matColumnDef="prix">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> Prix </th>
+      <td mat-cell *matCellDef="let element" style="color: black;"> {{element.prix |currency:"TND ":"symbol"}} </td>
+    </ng-container>  
+    
+    <ng-container matColumnDef="qte">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> qte </th>
+      <td mat-cell *matCellDef="let element" style="color: black;">   {{somme(element)}} </td>
+    </ng-container>  
+    
+    <ng-container matColumnDef="taux_tva">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;">  tva </th>
+      <td mat-cell *matCellDef="let element" style="color: black;"> {{element.taux_tva}} </td>
+    </ng-container>  
+ 
+    <ng-container matColumnDef="taux_remise">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;">   remise </th>
+      <td mat-cell *matCellDef="let element" style="color: black;"> {{element.taux_remise}} </td>
+    </ng-container>  
+    <ng-container matColumnDef="categorie">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;">  categorie </th>
+      <td mat-cell *matCellDef="let element" style="color: black;"> {{element.categorie.categorie_lib}} </td>
+    </ng-container>  
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> Action </th>
+      <td mat-cell *matCellDef="let element">
+         <a   [routerLink]="['/espace_admin/article/modifier/',element.id_article]"><i class="fa fa-edit" style="color: blue;font-size: 20px;"></i></a>
+         &nbsp; &nbsp; &nbsp; <a (click)="supprimer(element.id_article)" ><i class="fa fa-trash-o  " style="color: red;font-size: 20px;"></i></a> 
+      </td>
+    </ng-container>
+ 
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20,50]"  showFirstLastButtons></mat-paginator>
+</div>
